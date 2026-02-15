@@ -2,22 +2,13 @@ const express = require("express");
 
 const app = express();
 
-// Railway נותן PORT אוטומטי
-const PORT = process.env.PORT || 8080;
+// חובה להשתמש ב־PORT של Railway
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-
-// בדיקה שהשרת חי
 app.get("/", (req, res) => {
-  res.send("WhatsApp Bot is Running 🚀");
+  res.send("Bot is running ✅");
 });
 
-// Webhook מ-Meta
-app.post("/webhook", (req, res) => {
-  console.log("Webhook received:", JSON.stringify(req.body, null, 2));
-  res.sendStatus(200);
-});
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
